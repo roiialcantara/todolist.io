@@ -40,7 +40,38 @@ function ToDoList() {
     });
     setTodos(updatedTodos);
   };
-  return <div>ToDoList</div>;
+  return (
+    <>
+      <div>
+        <h1>Todo App</h1>
+        <input
+          type="text"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+        />
+        <button onClick={addTodo}>Add Todo</button>
+        <ul>
+          {todos.map((todo) => (
+            <li key={todo.id}>
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => toggleComplete(todo.id)}
+              />
+              <span
+                style={{
+                  textDecoration: todo.completed ? "line-through" : "none",
+                }}
+              >
+                {todo.text}
+              </span>
+              <button onClick={() => removeTodo(todo.id)}>Remove</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
+  );
 }
 
 export default ToDoList;
