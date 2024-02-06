@@ -29,6 +29,17 @@ function ToDoList() {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };
+
+  // Complete Toggler
+  const toggleComplete = (id: string) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, completed: !todo.completed };
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+  };
   return <div>ToDoList</div>;
 }
 
